@@ -1,0 +1,102 @@
+Parte 1:
+
+display: inline
+
+Colocando display: inline nos elementos permite eles se posicionarem um do lado do outro, o problema do display: inline é que os elementos não aceitam mais que seja modificada tanto a width quanto a height. Isso limita MUITO nossas possibilidades.
+
+display: inline-block
+
+O display: inline-block permite os elementos se posicionarem um do lado do outro porém, diferentemente do display: inline ele permite que os elementos tenham sua width e height modificadas. Por esse motivo o display: inline-block é muito mais interessante na maioria dos casos do que o display: inline.
+
+O problema de usar display: inline-block é espaçar os elementos entre si. Para fazer isso teríamos que colocar margins e fazer contas.
+
+float: left | right
+
+O float é mais complicado, ele empurra o elemento para um dos lados (left | right) e os elementos que estão embaixo sobem. Isso nem sempre é o que a gente quer. Além do mais o float não permite que usemos a propriedade vertical-align: middle para alinhar os elementos verticalmente. Ou seja, para contornar isso uma possibilidade seria ter que colocar margin-top ou bottom nos elementos e usar os temidos números mágicos!
+
+display: flex
+
+O display: flex veio com o intuito de facilitar nossa vida nesses aspectos de posicionamento. Ele permite os elementos ficarem um do lado do outro, permite espaçar os elementos de forma mais intuitiva e sem ter que fazer cálculos. Além disso ele também permite alinhar os elementos verticalmente de forma fácil.
+
+O display flex pode ser um pouco mais complicado de usar tendo em vista que existem diversas propriedades que vem junto da especificação flexible box, todavia tudo isso foi feito para justamente melhorar nosso código.
+
+Parte 2:
+
+Sabemos que a propriedade justify-content: space-between faz com que o espaço que sobrou no nosso elemento pai seja distribuído entre os filhos, porém é claro que esse não é o único valor da propriedade justify-content.
+
+Podemos distribuir os elementos dentro do pai de diversas formas, podemos por exemplo:
+
+Colocar todo espaço à esquerda, jogando o conteúdo para direita com justify-content: flex-end.
+
+Colocar todo espaço à direita, jogando o conteúdo para esquerda com justify-content: flex-start (que é o padrão).
+
+Colocar todo espaço à esquerda e à direita, jogando o conteúdo para o meio com justify-content: center.
+
+Colocar todo espaço entre os elementos como vimos antes usando justify-content: space-between.
+
+E uma possibilidade bem interessante também é colocar o espaço em volta dos elementos. Podemos usar o justify-content: space-around para isso.
+
+Parte 3:
+
+Agora precisamos começar um grid, para isso usaremos flex. Como ficaria o CSS, utilizando flexbox, para organizar ( pensando apenas em posicionamento ) o seguinte HTML?
+
+<div class="grid">
+  <div class="box">Ruby on Rails</div>
+  <div class="box">Java</div>
+  <div class="box">HTML</div>
+  <div class="box">Python</div>
+  <div class="box">Wordpress</div>
+  <div class="box">Bootstrap</div>
+  <div class="box">Java Web</div>
+  <div class="box">MySQL</div>
+</div>COPIAR CÓDIGO
+Quando for realizar esse teste na sua máquina, lembre-se de colocar altura, largura e alguma cor para as div`s.
+
+.box {
+  height: 50px;
+  width: 50px;
+  background-color: green;
+}
+
+Parte 4:
+
+Quando colocamos display: flex em um elemento, o navegador passa a considerar esse elemento como um flex container, ou seja, cria todo aquele comportamento que vimos anteriormente no curso, os filhos ficam um do lado do outro e podemos aplicar propriedades para espaçá-los.
+
+Os filhos de um flex container por sua vez também ganham um nome, são chamados de flex items.
+
+Quando utilizamos flexbox temos que ficar atentos em quem colocamos as propriedades de espaçamento e distribuição do flex. Por exemplo, existem algumas propriedades que devem ser aplicadas à flex container e outras que devem ser aplicadas nos flex items.
+
+
+Podemos ver claramente quais propriedades são aplicadas ao container e aos flex items, não há necessidade de ficar decorando, isso virá naturalmente com a prática.
+
+Seguindo a documentação temos:
+
+container:
+
+display: flex
+
+flex-direction
+justify-content
+flex-wrap
+flex-flow
+align-items
+align-content
+
+flex item:
+
+order
+flex-grow
+flex-shrink
+flex-basis
+flex
+align-self
+
+O nosso menu no header do site tem um link para baixar o app do Alurinha. Quando o usuário abre o nosso site com um dispositivo móvel a última opção do menu é o app. Como podemos fazer para melhorar a experiência do usuário nesse caso?
+
+O melhor seria mudar a ordem do menu, colocando o link de baixar o app em primeiro lugar, assim logo que o usuário abrisse a nossa página ele já encontraria o link logo de cara a baixaria nosso app.
+
+Para fazer isso devemos usar a propriedade order no nosso flex item. Podemos usar qualquer valor menor que 0 para que nosso flex item fique antes de todos.
+
+.cabecalhoPrincipal-nav-link-app {
+  order: -1;
+}
